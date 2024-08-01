@@ -24,12 +24,13 @@ def main():
     args = parser.parse_args()
 
     # Generate the data structures for the benchmark
+    # Making a copy is from learning how-to using the framework, optional
     array0 = cp.random.rand(args.arraysize, dtype=cp.float32)
-    array_copy = cp.array(array0)
+    arrayb = cp.array(array0)
 
     for _ in range(10):
         start_time = time.time()
-        compute_inplace(array_copy)
+        compute_inplace(arrayb)
         if args.incl_synctime:
             cp.cuda.Device().synchronize()
         elapsed_time = time.time() - start_time

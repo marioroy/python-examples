@@ -32,10 +32,11 @@ def main():
     args = parser.parse_args()
 
     # Generate the data structures for the benchmark
+    # Making a copy is from learning how-to using the framework, optional
     array0 = np.random.rand(args.arraysize).astype(np.float32)
-    array_copy = np.array(array0)
+    arrayb = np.array(array0)
 
-    array_copy = cuda.to_device(array_copy)
+    arrayb = cuda.to_device(arrayb)
     cuda.synchronize()
 
     block_size = 32
@@ -43,7 +44,7 @@ def main():
 
     for _ in range(10):
         start_time = time.time()
-        compute_inplace[num_blocks, block_size](array_copy)
+        compute_inplace[num_blocks, block_size](arrayb)
         if args.incl_synctime:
             cuda.synchronize()
         elapsed_time = time.time() - start_time

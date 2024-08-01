@@ -33,12 +33,13 @@ def compute_inplace(array: ti.types.ndarray()):
 
 def main():
     # Generate the data structures for the benchmark
+    # Making a copy is from learning how-to using the framework, optional
     array0 = np.random.rand(args.arraysize).astype(np.float32)
-    array_copy = np.array(array0)
+    arrayb = np.array(array0)
 
     for _ in range(10):
         start_time = time.time()
-        compute_inplace(array_copy)
+        compute_inplace(arrayb)
         elapsed_time = time.time() - start_time
         print(f"{elapsed_time * 1e6:12.3f} µs")
 

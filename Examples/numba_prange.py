@@ -19,7 +19,7 @@ parser.add_argument("--chunksize", type=int, default=10_000)  # 0 = auto
 parser.add_argument("--arraysize", type=int, default=100_000_000)
 args = parser.parse_args()
 
-# Set env variable before importing Numba.
+# Set the env variable before importing Numba
 os.environ['NUMBA_NUM_THREADS'] = str(max(1, args.workers))
 from numba import njit, prange, set_parallel_chunksize
 
@@ -33,12 +33,13 @@ def compute_inplace(array, chunksize):
 
 def main():
     # Generate the data structures for the benchmark
+    # Making a copy is from learning how-to using the framework, optional
     array0 = np.random.rand(args.arraysize).astype(np.float32)
-    array_copy = np.array(array0)
+    arrayb = np.array(array0)
 
     for _ in range(10):
         start_time = time.time()
-        compute_inplace(array_copy, args.chunksize)
+        compute_inplace(arrayb, args.chunksize)
         elapsed_time = time.time() - start_time
         print(f"{elapsed_time * 1e6:12.3f} µs")
 

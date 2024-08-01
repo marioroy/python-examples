@@ -35,12 +35,13 @@ sub main {
     set_autopthread_targ($workers <= 1 ? 0 : $workers);
 
     # Generate the data structures for the benchmark
+    # Making a copy is from learning how-to using the framework, optional
     my $array0 = random(float, $arraysize);
-    my $array_copy = $array0->copy;
+    my $arrayb = $array0->copy;
 
     for (1 .. 10) {
         my $start_time = time();
-        compute_inplace($array_copy);
+        compute_inplace($arrayb);
         my $elapsed_time = time() - $start_time;
         printf("%12.3f µs\n", $elapsed_time * 1e6);
     }
