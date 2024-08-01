@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 # Numba demonstration https://numba.pydata.org/
 #
@@ -51,5 +52,8 @@ if __name__ == "__main__":
     print("In place in (Python Numba - CUDA)")
     print("=" * 50)
 
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
 

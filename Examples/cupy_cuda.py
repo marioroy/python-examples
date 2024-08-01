@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 # CuPy demonstration https://cupy.dev/
 #
@@ -51,5 +52,8 @@ if __name__ == "__main__":
     print("In place in (Python CuPy - CUDA)")
     print("=" * 50)
 
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
 

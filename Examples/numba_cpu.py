@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 # Numba demonstration https://numba.pydata.org/
 #
@@ -37,5 +38,8 @@ if __name__ == "__main__":
     print("In place in (Python Numba - single CPU thread)")
     print("=" * 50)
 
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
 

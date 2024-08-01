@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 # NumPy demonstration https://numpy.org/
 #
@@ -35,5 +36,8 @@ if __name__ == "__main__":
     print("In place in (Python NumPy - CPU)")
     print("=" * 50)
 
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 # Taichi Lang demonstration https://www.taichi-lang.org/
 #
@@ -49,5 +50,8 @@ if __name__ == "__main__":
     print("=" * 50)
 
     ti.init(arch=ti.gpu) # auto-detect GPU backend
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass
 

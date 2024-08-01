@@ -1,3 +1,4 @@
+#!/usr/bin/env perl
 
 # PDL demonstration https://pdl.perl.org
 #
