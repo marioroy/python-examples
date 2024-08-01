@@ -28,23 +28,25 @@ def divide_up(dividend, divisor):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--arraysize", type=int, default=100_000_000)
+    parser.add_argument("--incl-asnumpy", default=False, action='store_true')
     parser.add_argument("--incl-synctime", default=False, action='store_true')
     args = parser.parse_args()
 
     # Generate the data structures for the benchmark
     # Making a copy is from learning how-to using the framework, optional
     array0 = np.random.rand(args.arraysize).astype(np.float32)
-    arrayb = np.array(array0)
-
-    arrayb = cuda.to_device(arrayb)
+    arrayb = cuda.to_device(np.array(array0))
     cuda.synchronize()
 
     block_size = 32
     num_blocks = divide_up(args.arraysize, block_size)
+    array_np = np.zeros(args.arraysize, dtype=np.float32)
 
     for _ in range(10):
         start_time = time.time()
         compute_inplace[num_blocks, block_size](arrayb)
+        if args.incl_asnumpy:
+            arrayb.copy_to_host(array_np)
         if args.incl_synctime:
             cuda.synchronize()
         elapsed_time = time.time() - start_time

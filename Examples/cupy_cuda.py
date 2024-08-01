@@ -31,6 +31,7 @@ def divide_up(dividend, divisor):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--arraysize", type=int, default=100_000_000)
+    parser.add_argument("--incl-asnumpy", default=False, action='store_true')
     parser.add_argument("--incl-synctime", default=False, action='store_true')
     args = parser.parse_args()
 
@@ -38,13 +39,17 @@ def main():
     # Making a copy is from learning how-to using the framework, optional
     array0 = cp.random.rand(args.arraysize, dtype=cp.float32)
     arrayb = cp.array(array0)
+    cp.cuda.Device().synchronize()
 
     block_size = 32
     num_blocks = divide_up(args.arraysize, block_size)
+    array_np = np.zeros(args.arraysize, dtype=np.float32)
 
     for _ in range(10):
         start_time = time.time()
         kernel((num_blocks,), (block_size,), (arrayb, args.arraysize))
+        if args.incl_asnumpy:
+            cp.asnumpy(arrayb, out=array_np)
         if args.incl_synctime:
             cp.cuda.Device().synchronize()
         elapsed_time = time.time() - start_time

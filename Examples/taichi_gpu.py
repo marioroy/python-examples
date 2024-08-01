@@ -25,9 +25,15 @@ def compute_inplace(array: ti.template()):
     for i in array:
         array[i] = ti.cos(ti.sin(ti.sqrt(array[i])))
 
+@ti.kernel
+def copy_to_numpy(np_arr: ti.types.ndarray(), src_arr: ti.template()):
+    for i in src_arr:
+        np_arr[i] = src_arr[i]
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--arraysize", type=int, default=100_000_000)
+    parser.add_argument("--incl-asnumpy", default=False, action='store_true')
     parser.add_argument("--incl-synctime", default=False, action='store_true')
     args = parser.parse_args()
 
@@ -35,13 +41,17 @@ def main():
     # Making a copy is from learning how-to using the framework, optional
     array0 = ti.field(shape=args.arraysize, dtype=ti.float32)
     arrayb = ti.field(shape=args.arraysize, dtype=ti.float32)
+    ti.sync()
 
     init(array0)
     arrayb.copy_from(array0)
+    array_np = np.zeros(args.arraysize, dtype=np.float32)
 
     for _ in range(10):
         start_time = time.time()
         compute_inplace(arrayb)
+        if args.incl_asnumpy:
+            copy_to_numpy(array_np, arrayb)
         if args.incl_synctime:
             ti.sync()
         elapsed_time = time.time() - start_time
