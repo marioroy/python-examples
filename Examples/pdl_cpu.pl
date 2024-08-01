@@ -10,6 +10,7 @@
 use v5.30;
 use PDL;
 use Getopt::Long;
+use MCE::Util;
 use Time::HiRes qw(time);
 
 sub compute_inplace {
@@ -20,10 +21,15 @@ sub compute_inplace {
 }
 
 sub main {
+    my $workers = MCE::Util::get_ncpu();
     my $arraysize = 100_000_000;
     GetOptions(
+        "workers=i" => \$workers,
         "arraysize=i" => \$arraysize,
     ) or die "usage: $0 [ --arraysize=N ]\n";
+
+    # Set the number of threads for PDL
+    set_autopthread_targ($workers <= 1 ? 0 : $workers);
 
     # Generate the data structures for the benchmark
     my $array0 = random(float, $arraysize);
