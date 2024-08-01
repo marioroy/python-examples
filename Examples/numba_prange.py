@@ -20,7 +20,7 @@ parser.add_argument("--arraysize", type=int, default=100_000_000)
 args = parser.parse_args()
 
 # Set env variable before importing Numba.
-os.environ['NUMBA_NUM_THREADS'] = str(args.workers)
+os.environ['NUMBA_NUM_THREADS'] = str(max(1, args.workers))
 from numba import njit, prange, set_parallel_chunksize
 
 @njit('void(f4[:], i4)', nogil=True, parallel=True)
