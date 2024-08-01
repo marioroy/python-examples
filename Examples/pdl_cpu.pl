@@ -1,4 +1,11 @@
 
+# PDL demonstration https://pdl.perl.org
+#
+# Complementary code for The Quest for Performance Part II : Perl vs Python.
+# https://chrisarg.github.io/Killing-It-with-PERL/
+#
+# Author: Mario Roy, August 1, 2024
+
 use v5.30;
 use PDL;
 use Getopt::Long;

@@ -1,5 +1,5 @@
 
-This repo provides complementary demonstrations for a web article found on the web.
+This repo provides complementary demonstrations for a web article found on the web, by Christos Argyropoulos.
 
 [The Quest for Performance Part II : Perl vs Python](https://chrisarg.github.io/Killing-It-with-PERL/2024/07/07/The-Quest-For-Performance-Part-II-PerlVsPython.md.html)
 
