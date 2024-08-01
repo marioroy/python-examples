@@ -28,6 +28,7 @@ def compute_inplace(array: ti.template()):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--arraysize", type=int, default=100_000_000)
+    parser.add_argument("--incl-synctime", default=False, action='store_true')
     args = parser.parse_args()
 
     # Generate the data structures for the benchmark
@@ -40,7 +41,8 @@ def main():
     for _ in range(10):
         start_time = time.time()
         compute_inplace(array_copy)
-      # ti.sync()
+        if args.incl_synctime:
+            ti.sync()
         elapsed_time = time.time() - start_time
         print(f"{elapsed_time * 1e6:12.3f} µs")
 

@@ -39,7 +39,6 @@ def main():
     for _ in range(10):
         start_time = time.time()
         compute_inplace(array_copy)
-      # ti.sync()
         elapsed_time = time.time() - start_time
         print(f"{elapsed_time * 1e6:12.3f} µs")
 

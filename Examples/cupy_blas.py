@@ -20,6 +20,7 @@ def compute_inplace(array):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--arraysize", type=int, default=100_000_000)
+    parser.add_argument("--incl-synctime", default=False, action='store_true')
     args = parser.parse_args()
 
     # Generate the data structures for the benchmark
@@ -29,7 +30,8 @@ def main():
     for _ in range(10):
         start_time = time.time()
         compute_inplace(array_copy)
-      # cp.cuda.Device().synchronize()
+        if args.incl_synctime:
+            cp.cuda.Device().synchronize()
         elapsed_time = time.time() - start_time
         print(f"{elapsed_time * 1e6:12.3f} µs")
 
