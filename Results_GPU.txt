@@ -3,7 +3,7 @@
 
 $ python cupy_blas.py 
 ==================================================
-In place in (Python CuPy - cuBLAS)
+In place in (Python CuPy - GPU cuBLAS)
 ==================================================
     6246.805 µs
       24.557 µs
@@ -18,7 +18,7 @@ In place in (Python CuPy - cuBLAS)
 
 $ python numba_cuda.py 
 ==================================================
-In place in (Python Numba - CUDA)
+In place in (Python Numba - GPU CUDA)
 ==================================================
      182.629 µs
       40.054 µs
@@ -34,7 +34,7 @@ In place in (Python Numba - CUDA)
 $ python taichi_cuda.py 
 [Taichi] version 1.8.0, llvm 15.0.4, commit 37a05638, linux, python 3.10.13
 ==================================================
-In place in (Python Taichi - CUDA)
+In place in (Python Taichi - GPU CUDA)
 ==================================================
 [Taichi] Starting on arch=cuda
    15263.557 µs

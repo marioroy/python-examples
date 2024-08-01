@@ -5,7 +5,7 @@ import taichi as ti
 
 if __name__ == "__main__":
     print("=" * 50)
-    print("In place in (Python Taichi - Metal)")
+    print("In place in (Python Taichi - GPU Metal)")
     print("=" * 50)
 
     ti.init(arch=ti.metal)

@@ -44,7 +44,7 @@ def main():
 
 if __name__ == "__main__":
     print("=" * 50)
-    print("In place in (Python Numba - CPU threads)")
+    print("In place in (Python Numba - CPU multi-threaded)")
     print("=" * 50)
 
     try:

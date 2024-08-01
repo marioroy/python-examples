@@ -46,7 +46,7 @@ def main():
 
 if __name__ == "__main__":
     print("=" * 50)
-    print("In place in (Python Taichi - GPU)")
+    print("In place in (Python Taichi - GPU auto)")
     print("=" * 50)
 
     ti.init(arch=ti.gpu) # auto-detect GPU backend

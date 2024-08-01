@@ -35,7 +35,7 @@ def main():
 
 if __name__ == "__main__":
     print("=" * 50)
-    print("In place in (Python CuPy - cuBLAS)")
+    print("In place in (Python CuPy - GPU cuBLAS)")
     print("=" * 50)
 
     try:
