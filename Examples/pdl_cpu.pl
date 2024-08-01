@@ -35,7 +35,7 @@ sub main {
     set_autopthread_targ($workers <= 1 ? 0 : $workers);
 
     # Generate the data structures for the benchmark
-    # Making a copy is from learning how-to using the framework, optional
+    # Making a copy is unnecessary for this demo, simply exploring
     my $array0 = random(float, $arraysize);
     my $arrayb = $array0->copy;
 

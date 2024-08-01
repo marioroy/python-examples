@@ -25,7 +25,7 @@ def main():
     args = parser.parse_args()
 
     # Generate the data structures for the benchmark
-    # Making a copy is from learning how-to using the framework, optional
+    # Making a copy is unnecessary for this demo, simply exploring
     array0 = cp.random.rand(args.arraysize, dtype=cp.float32)
     arrayb = cp.array(array0)
     cp.cuda.Device().synchronize()

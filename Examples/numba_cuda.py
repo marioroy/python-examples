@@ -33,9 +33,8 @@ def main():
     args = parser.parse_args()
 
     # Generate the data structures for the benchmark
-    # Making a copy is from learning how-to using the framework, optional
     array0 = np.random.rand(args.arraysize).astype(np.float32)
-    arrayb = cuda.to_device(np.array(array0))
+    arrayb = cuda.to_device(array0)
     cuda.synchronize()
 
     block_size = 32
