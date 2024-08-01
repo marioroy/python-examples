@@ -3,7 +3,7 @@
 
 $ perl pdl_cpu.pl
 ==================================================
-In place in (Perl PDL - many CPU threads)
+In place in (Perl PDL - CPU threads)
 ==================================================
    33974.886 µs
    37286.043 µs
@@ -18,7 +18,7 @@ In place in (Perl PDL - many CPU threads)
 
 $ python numba_prange.py 
 ==================================================
-In place in (Python Numba - many CPU threads)
+In place in (Python Numba - CPU threads)
 ==================================================
    30696.392 µs
    37623.167 µs
@@ -34,7 +34,7 @@ In place in (Python Numba - many CPU threads)
 $ python taichi_cpu.py 
 [Taichi] version 1.8.0, llvm 15.0.4, commit 37a05638, linux, python 3.10.13
 ==================================================
-In place in (Python Taichi - many CPU threads)
+In place in (Python Taichi - CPU threads)
 ==================================================
 [Taichi] Starting on arch=x64
    76603.651 µs

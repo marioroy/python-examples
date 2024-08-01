@@ -38,7 +38,7 @@ sub main {
 }
 
 say "=" x 50;
-say "In place in (Perl PDL - many CPU threads)";
+say "In place in (Perl PDL - CPU threads)";
 say "=" x 50;
 
 main();

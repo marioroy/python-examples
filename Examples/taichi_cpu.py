@@ -39,7 +39,7 @@ def main():
 
 if __name__ == "__main__":
     print("=" * 50)
-    print("In place in (Python Taichi - many CPU threads)")
+    print("In place in (Python Taichi - CPU threads)")
     print("=" * 50)
 
     ti.init(arch=ti.cpu)
