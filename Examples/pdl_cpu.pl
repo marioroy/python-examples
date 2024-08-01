@@ -28,6 +28,9 @@ sub main {
         "arraysize=i" => \$arraysize,
     ) or die "usage: $0 [ --arraysize=N ]\n";
 
+    # Set the minimum size problem to enable autothreading in PDL
+    set_autopthread_size(0);
+
     # Set the number of threads for PDL
     set_autopthread_targ($workers <= 1 ? 0 : $workers);
 
