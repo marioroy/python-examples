@@ -41,10 +41,11 @@ def main():
     # Making a copy is unnecessary for this demo, simply exploring
     array0 = ti.field(shape=args.arraysize, dtype=ti.float32)
     arrayb = ti.field(shape=args.arraysize, dtype=ti.float32)
-    ti.sync()
 
     init(array0)
     arrayb.copy_from(array0)
+    ti.sync()
+
     array_np = np.zeros(args.arraysize, dtype=np.float32)
 
     for _ in range(10):
